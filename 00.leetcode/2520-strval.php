@@ -7,13 +7,22 @@ class Solution {
      * @return Integer
      */
     function countDigits($num) {
-        $len=strlen($num); //这里发生了int到string的强制转换
+        $len=strlen($num);
         $ret=0;
-        // strval — 获取变量的字符串值
         $numStr = strval($num);
+
+        /*
+        echo $numStr;
+        var_dump($numStr);
+        var_dump($num);
+        712
+        string(3) "712"
+        int(712)
+        */
+
         for($i=0; $i<$len; ++$i){
-            if( '0' != $num[$i] && 0==$numStr%$numStr[$i]  ){
-                $ret++;
+            if( '0' != $numStr[$i] && 0 == $num % intval($numStr[$i])  ){
+                ++$ret;
             }
         }
         return $ret;
